@@ -1,0 +1,75 @@
+{
+  "name": "mu-pdf-viewer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azu/mu-pdf-viewer.git"
+  },
+  "author": "azu",
+  "email": "azuciao@gmail.com",
+  "homepage": "https://github.com/azu/mu-pdf-viewer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/azu/mu-pdf-viewer/issues"
+  },
+  "files": [
+    "src/",
+    "lib/"
+  ],
+  "version": "1.0.0",
+  "description": "pdf viewer on electron",
+  "main": "lib/mu-pdf-viewer.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "npm-run-all clean --parallel watch:* electron",
+    "test": "mocha test/",
+    "electron": "electron index.js",
+    "build": "npm-run-all clean --parallel build:*",
+    "watch": "npm-run-all clean --parallel watch:*",
+    "prepublish": "npm run --if-present build",
+    "clean": "rimraf public/build && mkdirp public/build",
+    "server": "NODE_ENV=development webpack-dev-server -d --hot --content-base ./public --open",
+    "build:js": "NODE_ENV=production webpack -p",
+    "build:css": "postcss --config postcss.config.js",
+    "watch:js": "NODE_ENV=development webpack -d --watch",
+    "watch:css": "chokidar --initial 'src/**/*.css' -c 'postcss --config postcss.config.js'"
+  },
+  "keywords": [
+    "pdf",
+    "electron"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^6.4.0",
+    "babel-cli": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-jsdoc-to-assert": "^2.0.1",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.11.6",
+    "chokidar-cli": "^1.2.0",
+    "json-loader": "^0.5.4",
+    "mkdirp": "^0.5.1",
+    "mocha": "^3.0.2",
+    "npm-run-all": "^2.3.0",
+    "postcss-calc": "^5.3.0",
+    "postcss-cli": "^2.5.2",
+    "postcss-custom-media": "^5.0.1",
+    "postcss-custom-properties": "^5.0.1",
+    "postcss-easy-import": "^1.0.1",
+    "postcss-reporter": "^1.4.1",
+    "power-assert": "^1.4.1",
+    "rimraf": "^2.5.4",
+    "webpack": "^2.1.0-beta.20",
+    "webpack-dev-server": "^2.1.0-beta.0"
+  },
+  "dependencies": {
+    "almin": "^0.6.1",
+    "almin-logger": "^1.3.2",
+    "electron-prebuilt": "^1.3.3",
+    "pdfjs-dist": "^1.5.376",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  }
+}
