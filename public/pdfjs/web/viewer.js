@@ -7738,6 +7738,11 @@ window.addEventListener('click', function click(evt) {
   }
 }, false);
 
+function scrollByPercent(vertical){
+  let viewer = document.getElementById("viewerContainer");
+  let scrollValue = (window.innerHeight / 2) * vertical;
+  viewer.scrollTop = viewer.scrollTop + scrollValue;
+}
 window.addEventListener('keydown', function keydown(evt) {
   if (OverlayManager.active) {
     return;
@@ -7864,7 +7869,7 @@ window.addEventListener('keydown', function keydown(evt) {
         /* falls through */
       case 75: // 'k'
       case 80: // 'p'
-        PDFViewerApplication.page--;
+        scrollByPercent(-0.3);
         handled = true;
         break;
       case 27: // esc key
@@ -7894,7 +7899,7 @@ window.addEventListener('keydown', function keydown(evt) {
         /* falls through */
       case 74: // 'j'
       case 78: // 'n'
-        PDFViewerApplication.page++;
+        scrollByPercent(0.3);
         handled = true;
         break;
 
