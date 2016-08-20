@@ -1,3 +1,8 @@
 * {
     box-sizing: border-box
 }
+
+/* http://var.blog.jp/archives/28299286.html */
+iframe, webview {
+    vertical-align: top;
+}
