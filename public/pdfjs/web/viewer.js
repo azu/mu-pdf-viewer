@@ -7852,9 +7852,12 @@ window.addEventListener('keydown', function keydown(evt) {
 
   if (cmd === 0) { // no control key pressed at all.
     switch (evt.keyCode) {
+      case 8: // backspace
+        PDFViewerApplication.pdfHistory.back();
+        handled = true;
+        break;
       case 38: // up arrow
       case 33: // pg up
-      case 8: // backspace
         if (!isViewerInPresentationMode &&
             pdfViewer.currentScaleValue !== 'page-fit') {
           break;
@@ -7866,6 +7869,8 @@ window.addEventListener('keydown', function keydown(evt) {
         if (pdfViewer.isHorizontalScrollbarEnabled) {
           break;
         }
+        PDFViewerApplication.page--;
+        handled = true;
         /* falls through */
       case 75: // 'k'
       case 80: // 'p'
@@ -7885,6 +7890,13 @@ window.addEventListener('keydown', function keydown(evt) {
         break;
       case 40: // down arrow
       case 34: // pg down
+        if (isViewerInPresentationMode) {
+          PDFViewerApplication.page++;
+          break;
+        }
+        PDFViewerApplication.page++;
+        handled = true;
+        break;
       case 32: // spacebar
         if (isViewerInPresentationMode) {
           PDFViewerApplication.page++;
