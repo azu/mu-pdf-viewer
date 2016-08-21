@@ -1,4 +1,4 @@
-# mu-pdf-viewer
+# mu-pdf-viewer [![Build Status](https://travis-ci.org/azu/mu-pdf-viewer.svg?branch=master)](https://travis-ci.org/azu/mu-pdf-viewer)
 
 PDF viewer on electron
 
