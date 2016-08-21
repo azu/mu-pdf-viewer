@@ -18,9 +18,17 @@ export default class InitializeDomainUseCase extends UseCase {
         this.pdfViewerRepository = pdfViewerRepository;
     }
 
-    execute() {
+    /**
+     * Create and initialize domain with location query object
+     * @param {Object} query
+     */
+    execute(query) {
+        // html?file=default-pdf-file
+        // or
+        // html?_=default-pdf-file
+        const url = query.file || query._;
         // Create {@link PDFViewer}
-        const pdfViewer = PDFViewerFactory.create();
+        const pdfViewer = PDFViewerFactory.create({url});
         this.pdfViewerRepository.save(pdfViewer);
     }
 }

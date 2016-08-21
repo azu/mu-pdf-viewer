@@ -3,7 +3,8 @@ const electron = require("electron");
 const app = electron.app;
 const windowStateKeeper = require('electron-window-state');
 const BrowserWindow = electron.BrowserWindow;
-
+const argv = require('minimist')(process.argv.slice(2));
+const qs = require("querystring");
 let mainWindow = null;
 app.on('ready', function() {
     const mainWindowState = windowStateKeeper({
@@ -17,8 +18,8 @@ app.on('ready', function() {
         'height': mainWindowState.height,
     });
     mainWindowState.manage(mainWindow);
-
-    mainWindow.loadURL('file://' + __dirname + '/public/index.html');
+    const query = qs.stringify(argv)
+    mainWindow.loadURL('file://' + __dirname + '/public/index.html?' + query);
     mainWindow.webContents.openDevTools();
     mainWindow.on('closed', function() {
         mainWindow = null;

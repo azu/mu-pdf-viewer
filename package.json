@@ -70,6 +70,7 @@
     "electron-window-state": "^3.0.3",
     "glob": "^7.0.5",
     "map-like": "^1.0.1",
+    "minimist": "^1.2.0",
     "mousetrap": "^1.6.0",
     "normalize.css": "^4.2.0",
     "pdfjs-dist": "^1.5.376",
