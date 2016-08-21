@@ -36,15 +36,8 @@ export default class AppContainer extends React.Component {
          * @type {PDFViewerState}
          */
         const pdfViewer = this.state.pdfViewer;
-        const keyMap = {
-            "a": function() {
-                console.log("a");
-            }
-        };
         return <div className="AppContainer">
-            <Keyboard keyMap={keyMap}>
-                <PDFViewerContainer pdfViewer={pdfViewer}/>
-            </Keyboard>
+            <PDFViewerContainer pdfViewer={pdfViewer}/>
         </div>;
     }
 }

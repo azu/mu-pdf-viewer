@@ -10,6 +10,7 @@ module.exports = {
         publicPath: "/build/",
         filename: "bundle.js"
     },
+    target: "electron",
     module: {
         // to avoid warning by power-assert-formatter
         exprContextCritical: false,
@@ -17,6 +18,11 @@ module.exports = {
             {
                 test: /\.json$/,
                 loader: "json-loader"
+            },
+            {
+                test: /\.js$/,
+                include: path.join(__dirname, "src/component/project/PDFViewer"),
+                loader: "transform?brfs"
             },
             {
                 test: /\.js$/,

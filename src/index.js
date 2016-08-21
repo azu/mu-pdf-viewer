@@ -9,15 +9,18 @@ import AppLocator from "./AppLocator";
 import AppContainer from "./component/container/AppContainer";
 // store
 import createStoreGroup from "./store/AppStoreGroup";
+// use-case
+import InitializeDomainUseCase from "./use-case/InitializeDomainUseCase";
 const storeGroup = createStoreGroup();
 const context = new Context({
     dispatcher: new Dispatcher(),
     store: storeGroup
 });
-if (process.env.NODE_ENV === "development") {
-    const alminLogger = new AlminLogger();
-    alminLogger.startLogging(context);
-}
+const alminLogger = new AlminLogger();
+alminLogger.startLogging(context);
 AppLocator.context = context;
-ReactDOM.render(<AppContainer />, document.getElementById("js-main"));
+// Initialize and start rendering
+AppLocator.context.useCase(InitializeDomainUseCase.create()).execute().then(() => {
+    ReactDOM.render(<AppContainer />, document.getElementById("js-main"));
+});
 

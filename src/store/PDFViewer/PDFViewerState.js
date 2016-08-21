@@ -10,8 +10,17 @@ export default class PDFViewerState extends ReduceState {
         this.url = state.url;
     }
 
-    update(domain) {
-        return this;
+    /**
+     * @param {PDFViewer} pdfViewer
+     * @returns {PDFViewerState}
+     */
+    update(pdfViewer) {
+        if (!pdfViewer.document.url) {
+            return this;
+        }
+        return new PDFViewerState(Object.assign({}, this, {
+            url: pdfViewer.document.url
+        }));
     }
 
     reduce(payload) {
