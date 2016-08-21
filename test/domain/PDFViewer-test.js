@@ -1,5 +1,6 @@
 // LICENSE : MIT
 "use strict";
+const assert = require("assert");
 import PDFViewerFactory from "../../src/domain/PDFViewer/PDFViewerFactory";
 import PDFViewer from "../../src/domain/PDFViewer/PDFViewer";
 describe("PDFViewer", () => {
