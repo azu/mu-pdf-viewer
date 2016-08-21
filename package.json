@@ -18,6 +18,9 @@
   "version": "1.0.0",
   "description": "pdf viewer on electron",
   "main": "index.js",
+  "bin": {
+    "mu-pdf-viewer": "bin/cmd.js"
+  },
   "directories": {
     "test": "test"
   },

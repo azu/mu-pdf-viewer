@@ -5,6 +5,7 @@ PDF viewer on electron
 ## Features
 
 - [PDF.js](https://github.com/mozilla/pdf.js "PDF.js") based
+    - [Frequently Asked Questions · mozilla/pdf.js Wiki](https://github.com/mozilla/pdf.js/wiki/Frequently-Asked-Questions "Frequently Asked Questions · mozilla/pdf.js Wiki")
 - Improve scroll by J, K
 - Drag and Drop support
 
@@ -12,7 +13,20 @@ PDF viewer on electron
 
 Install with [npm](https://www.npmjs.com/):
 
-    npm install mu-pdf-viewer
+    npm install mu-pdf-viewer -g
+
+## Usage
+
+### CLI
+
+Open app with pdf file.
+
+    $ mu-pdf-viewer <pdf-file-path>
+
+## Development
+
+Watch change and launch app.
+
     npm start
 
 ## Changelog
