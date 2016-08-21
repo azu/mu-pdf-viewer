@@ -7886,11 +7886,13 @@ window.addEventListener('keydown', function keydown(evt) {
       case 40: // down arrow
       case 34: // pg down
       case 32: // spacebar
-        if (!isViewerInPresentationMode &&
-            pdfViewer.currentScaleValue !== 'page-fit') {
+        if (isViewerInPresentationMode) {
+          PDFViewerApplication.page++;
           break;
         }
-        /* falls through */
+        scrollByPercent(0.3);
+        handled = true;
+        break;
       case 39: // right arrow
         // horizontal scrolling using arrow keys
         if (pdfViewer.isHorizontalScrollbarEnabled) {
@@ -7933,11 +7935,11 @@ window.addEventListener('keydown', function keydown(evt) {
   if (cmd === 4) { // shift-key
     switch (evt.keyCode) {
       case 32: // spacebar
-        if (!isViewerInPresentationMode &&
-            pdfViewer.currentScaleValue !== 'page-fit') {
+        if (isViewerInPresentationMode) {
+          PDFViewerApplication.page--;
           break;
         }
-        PDFViewerApplication.page--;
+        scrollByPercent(-0.3);
         handled = true;
         break;
 

@@ -81,6 +81,7 @@ export default class PDFViewer extends React.Component {
                        src={`${PDFViewer.PDFJS_VIEWER_HTML}?${param}`}
                        ref={(c) => this.iframe = c}
                        onLoad={this._onIframeLoad}
+                       allowFullScreen
         />;
     }
 
