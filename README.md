@@ -9,6 +9,8 @@ PDF viewer on electron
 - Improve scroll by J, K
 - Drag and Drop support
 
+![screenshot](https://monosnap.com/file/BfCnnmtQZhiRNDAfahDjTtzQpy4nss.png)
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
