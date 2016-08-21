@@ -75,7 +75,6 @@
     "normalize.css": "^4.2.0",
     "pdfjs-dist": "^1.5.376",
     "react": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "react-dropzone": "^3.5.3"
+    "react-dom": "^15.3.0"
   }
 }
