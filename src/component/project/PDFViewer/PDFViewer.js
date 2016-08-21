@@ -59,6 +59,9 @@ export default class PDFViewer extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
+        if (this.PDFViewerApplication) {
+            return this.PDFViewerApplication.url !== nextProps.url;
+        }
         return nextProps.url !== this.props.url;
     }
 
@@ -73,9 +76,6 @@ export default class PDFViewer extends React.Component {
     }
 
     render() {
-        if (!this.props.url) {
-            return null;
-        }
         const param = qs.stringify({file: this.props.url});
         return <iframe className="PDFViewer"
                        src={`${PDFViewer.PDFJS_VIEWER_HTML}?${param}`}

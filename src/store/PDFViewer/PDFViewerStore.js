@@ -10,7 +10,6 @@ export default class PDFViewerStore extends ReduceStore {
     constructor({pdfViewerRepository}) {
         super();
         this.state = new PDFViewerState({
-            url: "file://localhost/Users/azu/Downloads/Abstract.Locale.Operations.pdf"
         });
         pdfViewerRepository.onChange(this._onChange.bind(this));
     }

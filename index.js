@@ -18,9 +18,11 @@ app.on('ready', function() {
         'height': mainWindowState.height,
     });
     mainWindowState.manage(mainWindow);
-    const query = qs.stringify(argv)
+    const query = qs.stringify(argv);
     mainWindow.loadURL('file://' + __dirname + '/public/index.html?' + query);
-    mainWindow.webContents.openDevTools();
+    if (process.env.NODE_ENV === "development") {
+        mainWindow.webContents.openDevTools();
+    }
     mainWindow.on('closed', function() {
         mainWindow = null;
     });

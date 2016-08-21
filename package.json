@@ -17,7 +17,7 @@
   ],
   "version": "1.0.0",
   "description": "pdf viewer on electron",
-  "main": "lib/mu-pdf-viewer.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
