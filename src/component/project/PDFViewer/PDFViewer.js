@@ -47,6 +47,7 @@ export default class PDFViewer extends React.Component {
             if (typeof this.props.onLoad === "function") {
                 this.props.onLoad(this.PDFViewerApplication.url);
             }
+            this.iframe.focus();
         };
         this._onIframeLoad = () => {
             this._addEventToIframe();

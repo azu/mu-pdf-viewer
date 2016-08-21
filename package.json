@@ -14,7 +14,8 @@
   "files": [
     "src/",
     "lib/",
-    "bin/"
+    "bin/",
+    "public/"
   ],
   "version": "1.0.0",
   "description": "pdf viewer on electron",
