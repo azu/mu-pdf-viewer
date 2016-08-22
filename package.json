@@ -33,7 +33,7 @@
   "scripts": {
     "electron:pack": "build --dir",
     "electron:build": "build",
-    "electron:publish": "build --win --mac --publish onTagOrDraft",
+    "release": "build --win --mac --publish onTagOrDraft",
     "electron": "electron index.js",
     "start": "npm-run-all clean --parallel watch:* electron",
     "test": "mocha test/",
