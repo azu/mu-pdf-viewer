@@ -1,16 +1,19 @@
-sudo: false
+sudo: required
+dist: trusty
+matrix:
+  include:
+  - os: osx
 language: node_js
 node_js: stable
-cache:
-  directories:
-  - node_modules
-  - app/node_modules
-  - "$HOME/.electron"
-  - "$HOME/.cache"
 addons:
   apt:
     packages:
-    - wine
+    - icnsutils
+    - graphicsmagick
+cache:
+  apt: true
+  directories:
+  - "$HOME/.electron"
 script:
 - npm test
 before_deploy:
