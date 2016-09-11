@@ -17,7 +17,7 @@
     "bin/",
     "public/"
   ],
-  "version": "1.1.15",
+  "version": "1.1.16",
   "description": "pdf viewer on electron",
   "main": "index.js",
   "bin": {
