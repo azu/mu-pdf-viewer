@@ -16,7 +16,7 @@ deploy:
   api_key:
     secure: WQoYzeNII7+gKhOagtKnwrQGZJqSKdmd3Fq5IjvalygTZRwm+CRRUHMU5tiZtCpq7AQUnNwnfbDOGORC++nI2gVGOzg7ykc5ETi5hZpPZdsdktoI/+gcKbC2tV16bQOkQ4Z18V4zV6Vvhde1Lug7TKHds+mlsfKLTqVxPfqx5M3VyYIAYju1MrePrkNm6BK4wFlHQcJEvcNe8S1TyrYiO3GP179LGWf0pCrfuxRoxGUT404OeJSn/dZ9Un5H047JbB1PkONIGd3Wk1meKAdzRdfFSI2+fxZcMLGYJRbLMJTGJ0hPFBU3YjnfSg+KuNJUDCiZb3SoLW25Pz0k3dQVkwJPf33NIy7+x9yVNE70v2dXPM6MtSRRMMeaftx2V3oQsmOUk2xepPwCTIiCOk1f9bUdFVeFYzEueao9pCoDNwweHsf/McdI7TFc+7/Rsrk3WzjCfzGqZwRc5agtVieNTCpjyS6Nt3hh3AN9LVv7Aa2ExJ1M5SWkFtVQrLinYPmTx/VCkmorfjio3vz0N/aYJXpuKjBBijNu/StqAZ73myLE+n8/gON6XKIaFN6CLJTCeGd/debD0qt5HbvroXetJ2MMvH4TQa8hm/MUGDsu+rqD7lYaeSj3vb/EB6MDqFXzdYFvlTQuaTJpb+e39HS/IHTgl0U+ZkDlngobuLn/bNM=
   file:
-  - dist/mu-pdf-viewer-darwin-x64.zip
+  - ./dist/mu-pdf-viewer-darwin-x64.zip
 #  - dist/mu-pdf-viewer-win32-x64.zip
   on:
     repo: azu/mu-pdf-viewer
