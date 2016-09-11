@@ -10,6 +10,7 @@ addons:
     packages:
     - icnsutils
     - graphicsmagick
+    - wine
 cache:
   apt: true
   directories:
