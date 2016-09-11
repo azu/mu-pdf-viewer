@@ -7910,6 +7910,8 @@ window.addEventListener('keydown', function keydown(evt) {
         if (pdfViewer.isHorizontalScrollbarEnabled) {
           break;
         }
+        PDFViewerApplication.page++;
+        break;
         /* falls through */
       case 74: // 'j'
       case 78: // 'n'
