@@ -10,6 +10,7 @@ cache:
 script:
 - npm test
 before_deploy:
+- brew update
 - brew install wine
 - npm run electron:build
 deploy:
