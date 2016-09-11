@@ -19,6 +19,7 @@ deploy:
   file:
   - "dist/mu-pdf-viewer-darwin-x64.zip"
 #  - dist/mu-pdf-viewer-win32-x64.zip
+  skip_cleanup: true
   on:
     repo: azu/mu-pdf-viewer
     tags: true
