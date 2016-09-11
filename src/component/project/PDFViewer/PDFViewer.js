@@ -3,6 +3,14 @@
 const React = require("react");
 const qs = require("querystring");
 const fs = require("fs");
+const shell = require('electron').shell;
+const openURL = (URL) => {
+    if (/^https?:/.test(URL)) {
+        shell.openExternal(URL, {
+            activate: true
+        });
+    }
+};
 export default class PDFViewer extends React.Component {
     static get propTypes() {
         return {
@@ -51,7 +59,11 @@ export default class PDFViewer extends React.Component {
         };
         this._onIframeLoad = () => {
             this._addEventToIframe();
-        }
+        };
+        this._onDocumentClick = (event) => {
+            event.preventDefault();
+            openURL(event.target.href);
+        };
     }
 
 
@@ -96,10 +108,12 @@ export default class PDFViewer extends React.Component {
         iframeWindow.removeEventListener("documentload", this._onDocumentLoad);
         iframeWindow.document.removeEventListener("drop", this._onDrop);
         iframeWindow.document.removeEventListener("dragover", this._onDragOver);
+        iframeWindow.document.removeEventListener('click', this._onDocumentClick);
         // onload document
         iframeWindow.addEventListener("documentload", this._onDocumentLoad);
         iframeWindow.document.addEventListener("drop", this._onDrop);
         iframeWindow.document.addEventListener("dragover", this._onDragOver);
+        iframeWindow.document.addEventListener('click', this._onDocumentClick);
 
     }
 

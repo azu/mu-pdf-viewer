@@ -13,6 +13,13 @@ let openedFilePath;
 app.once('open-file', function(event, filePath) {
     openedFilePath = filePath;
 });
+const openURL = (URL) => {
+    if (/^https?:/.test(URL)) {
+        shell.openExternal(URL, {
+            activate: true
+        });
+    }
+};
 let mainWindow = null;
 app.on('ready', function() {
     const mainWindowState = windowStateKeeper({
@@ -29,7 +36,9 @@ app.on('ready', function() {
         'width': mainWindowState.width,
         'height': mainWindowState.height,
     });
-    mainWindowState.manage(mainWindow);
+    mainWindow.webContents.on('new-window', function(e) {
+        openURL(e.url);
+    });
     const openHTML = (filePath) => {
         const query = qs.stringify({
             file: filePath
