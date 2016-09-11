@@ -6,11 +6,11 @@ import PDFViewer from "../../domain/PDFViewer/PDFViewer";
 /**
  * @type {MemoryRepository.<PDFViewer>}
  */
-export default class PDFViewerRepository extends MemoryRepository {
+export class PDFViewerRepository extends MemoryRepository {
     constructor() {
         super(PDFViewer);
     }
-};
+}
 /**
  * @type {MemoryRepository.<PDFViewer>}
  */
