@@ -12,7 +12,7 @@ script:
 before_deploy:
 - brew update
 - brew install wine
-- npm run electron:build
+- npm run electron:build:osx
 deploy:
   provider: releases
   api_key:

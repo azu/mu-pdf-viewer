@@ -25,6 +25,27 @@ Open app with pdf file.
 
     $ mu-pdf-viewer <pdf-file-path>
 
+### App
+
+Download binary from latest release
+
+- https://github.com/azu/mu-pdf-viewer/releases/latest
+
+Or Build by yourself
+
+OS X:
+
+    npm run electron:build:osx
+
+Windows:
+
+    npm run electron:build:win
+
+Linux:
+
+    npm run electron:build:linux
+
+
 ## Development
 
 Watch change and launch app.
