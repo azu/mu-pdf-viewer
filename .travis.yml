@@ -1,16 +1,8 @@
 sudo: required
 dist: trusty
-matrix:
-  include:
-  - os: osx
+os: osx
 language: node_js
 node_js: stable
-addons:
-  apt:
-    packages:
-    - icnsutils
-    - graphicsmagick
-    - wine
 cache:
   apt: true
   directories:
@@ -18,6 +10,7 @@ cache:
 script:
 - npm test
 before_deploy:
+- brew install wine
 - npm run electron:build
 deploy:
   provider: releases
