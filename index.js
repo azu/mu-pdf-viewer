@@ -67,7 +67,8 @@ app.on('ready', function() {
     const menu = defaultMenu(app, shell);
     // Set top-level application menu, using modified template
     Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
-    mainWindow.on('closed', function() {
-        mainWindow = null;
+    app.on('window-all-closed', function() {
+        app.quit();
     });
+
 });
