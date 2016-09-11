@@ -11,6 +11,7 @@ script:
 - npm test
 before_deploy:
 - npm run electron:build:osx
+- ls dist/
 deploy:
   provider: releases
   api_key:
