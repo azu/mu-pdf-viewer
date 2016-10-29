@@ -1785,6 +1785,7 @@ var PDFHistory = (function () {
     this.initialized = false;
     this.initialDestination = null;
     this.initialBookmark = null;
+    this.historyUnlocked = true;
   }
 
   PDFHistory.prototype = {
@@ -6146,6 +6147,7 @@ var PDFViewerApplication = {
     this.pdfHistory = new PDFHistory({
       linkService: pdfLinkService
     });
+    this.pdfHistory.initialize(location.href);
     pdfLinkService.setHistory(this.pdfHistory);
 
     this.findController = new PDFFindController({
