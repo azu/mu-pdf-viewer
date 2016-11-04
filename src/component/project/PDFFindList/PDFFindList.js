@@ -18,9 +18,6 @@ export default class PDFFindList extends React.Component {
         if (!this.props.active) {
             return null;
         }
-        if (this.props.items.length === 0) {
-            return null;
-        }
         const items = this.props.items.map((item) => {
             const onItemClick = (event) => {
                 this.props.onItemClick(event, item);
