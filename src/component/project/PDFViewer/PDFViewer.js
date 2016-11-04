@@ -16,6 +16,8 @@ export default class PDFViewer extends React.Component {
         return {
             url: React.PropTypes.string,
             onLoad: React.PropTypes.func,
+            onFind: React.PropTypes.func,
+            onFindClose: React.PropTypes.func,
             onDrop: React.PropTypes.func
         }
     }
@@ -35,6 +37,19 @@ export default class PDFViewer extends React.Component {
             return;
         }
         return this.iframe.contentWindow.PDFViewerApplication;
+    }
+
+    set page(pageNumber) {
+        if (!this.iframe) {
+            return;
+        }
+
+        const PDFViewerApplication = this.iframe.contentWindow.PDFViewerApplication;
+        PDFViewerApplication.page = pageNumber;
+        PDFViewerApplication.pdfHistory.push({
+            hash: `#page=${pageNumber}`,
+            page: pageNumber
+        });
     }
 
     constructor() {
@@ -64,6 +79,13 @@ export default class PDFViewer extends React.Component {
             event.preventDefault();
             openURL(event.target.href);
         };
+
+        this._onFind = (event) => {
+            this.props.onFind(event);
+        };
+        this._onFindClose = (event) => {
+            this.props.onFindClose(event);
+        }
     }
 
 
@@ -109,11 +131,17 @@ export default class PDFViewer extends React.Component {
         iframeWindow.document.removeEventListener("drop", this._onDrop);
         iframeWindow.document.removeEventListener("dragover", this._onDragOver);
         iframeWindow.document.removeEventListener('click', this._onDocumentClick);
+        iframeWindow.removeEventListener('find', this._onFind);
+        iframeWindow.removeEventListener('findagain', this._onFind);
+        iframeWindow.removeEventListener('findclose', this._onFindClose);
         // onload document
         iframeWindow.addEventListener("documentload", this._onDocumentLoad);
         iframeWindow.document.addEventListener("drop", this._onDrop);
         iframeWindow.document.addEventListener("dragover", this._onDragOver);
         iframeWindow.document.addEventListener('click', this._onDocumentClick);
+        iframeWindow.addEventListener('find', this._onFind);
+        iframeWindow.addEventListener('findagain', this._onFind);
+        iframeWindow.addEventListener('findclose', this._onFindClose);
 
     }
 

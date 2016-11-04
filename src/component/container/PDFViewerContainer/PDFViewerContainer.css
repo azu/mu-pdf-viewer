@@ -1,6 +1,17 @@
 .PDFViewerContainer {
     width: 100%;
     height: 100%;
+    display: flex;
+}
+
+.PDFViewer {
+    width: 80%;
+}
+
+.PDFFindList {
+    width: 20%;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .PDFViewerContainer-Dropzone {

@@ -1,0 +1,22 @@
+.PDFFindList-main {
+    list-style-type: none;
+    padding: 0 0.3em;
+}
+
+.PDFFindList-item {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    height: calc(2em * 1.5);
+    overflow: hidden;
+    border-bottom: solid 1px #ddd;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.PDFFindListItem-pageNumber {
+    margin-right: 0.3em;
+}
+
+.PDFFindListItem-pageNumber::after {
+    content: ":";
+}
