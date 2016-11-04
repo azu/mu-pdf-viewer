@@ -1076,6 +1076,7 @@ var PDFFindBar = (function PDFFindBarClosure() {
       this.toggleButton.classList.remove('toggled');
       this.bar.classList.add('hidden');
       this.findController.active = false;
+      this.dispatchEvent('close');
     },
 
     toggle: function PDFFindBar_toggle() {
