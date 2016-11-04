@@ -28,7 +28,7 @@ export default class MemoryRepository extends EventEmitter {
     }
 
     /**
-     * @param {string} id
+     * @param {*} id
      * @return {T}
      * @private
      */

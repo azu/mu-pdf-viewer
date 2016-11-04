@@ -88,11 +88,6 @@ export default class PDFViewer extends React.Component {
         }
     }
 
-
-    componentWillReceiveProps(nextProps) {
-
-    }
-
     shouldComponentUpdate(nextProps) {
         if (this.PDFViewerApplication) {
             return this.PDFViewerApplication.url !== nextProps.url;

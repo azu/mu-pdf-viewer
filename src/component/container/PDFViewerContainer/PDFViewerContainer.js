@@ -68,6 +68,7 @@ export default class PDFViewerContainer extends React.Component {
     _onFind(event) {
         const window = event.target;
         const PDFViewerApplication = window.PDFViewerApplication;
+        PDFViewerApplication.findBar.highlightAll.checked = true;
         requestAnimationFrame(() => {
             this._updateFindResults(PDFViewerApplication);
         });
