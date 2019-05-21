@@ -46,6 +46,11 @@ Linux:
     npm run electron:build:linux
 
 
+## Architecture
+
+- Apply keyboard patch for public/pdfjs
+- Use old pdfjs version for `file://`
+
 ## Development
 
 Watch change and launch app.
