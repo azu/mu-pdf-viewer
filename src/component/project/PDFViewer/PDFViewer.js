@@ -41,20 +41,21 @@ export default class PDFViewer extends React.Component {
 
     /**
      * base64 image
-     * @return {string|undefined}
+     * @return {Promise}
      */
-    get currentPageAsHTML() {
-        let pdfViewerApplication = this.PDFViewerApplication;
-        if (!pdfViewerApplication) {
+    async currentPageAsHTML() {
+        let PDFViewerApplication = this.PDFViewerApplication;
+        if (!PDFViewerApplication) {
             return;
         }
-        const page = pdfViewerApplication.page;
+        const page = PDFViewerApplication.page;
         const canvas = this.iframe.contentWindow.document.querySelector(`canvas#page${page}`);
         if (!canvas) {
             return;
         }
-        const pageObject = pdfViewerApplication.getPage(page);
-        const textContent = pageObject.getTextContent();
+        const pageObject = await PDFViewerApplication.pdfDocument.getPage(page);
+        const results = await pageObject.getTextContent();
+        const textContent = results.items.map(item => item.str).join("");
         return `<img src="${canvas.toDataURL('image/png')}" alt="${textContent}" />`;
     }
 

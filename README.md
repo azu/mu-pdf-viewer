@@ -8,6 +8,7 @@ PDF viewer on electron
     - [Frequently Asked Questions · mozilla/pdf.js Wiki](https://github.com/mozilla/pdf.js/wiki/Frequently-Asked-Questions "Frequently Asked Questions · mozilla/pdf.js Wiki")
 - Improve scroll by J, K
 - Drag and Drop support
+- Ctrl + Shift + C: Copy current page and text
 
 ![screenshot](https://monosnap.com/file/BfCnnmtQZhiRNDAfahDjTtzQpy4nss.png)
 

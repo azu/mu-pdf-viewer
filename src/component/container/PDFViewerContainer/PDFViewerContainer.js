@@ -26,9 +26,11 @@ export default class PDFViewerContainer extends React.Component {
             matchPages: [],
             findBarActive: false
         };
-        ipcRenderer.on('to-copy', () => {
+        ipcRenderer.on('to-copy', async () => {
             console.log("onCopyHandler");
-            ipcRenderer.send('reply-copy', this.pdfViewer.currentPageAsHTML);
+            const HTML = await this.pdfViewer.currentPageAsHTML();
+            console.log(HTML);
+            ipcRenderer.send('reply-copy', HTML);
         });
         this._boundOnDrop = this._onDrop.bind(this);
         this._boundOnLoad = this._onLoad.bind(this);

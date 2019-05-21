@@ -1,15 +1,16 @@
 'use strict';
-const electron = require("electron");
-const app = electron.app;
-const shell = electron.shell;
-const Menu = electron.Menu;
-const globalShortcut = electron.globalShortcut;
-const ipcMain = electron.ipcMain;
-const { clipboard } = require('electron')
+const {
+    app,
+    shell,
+    Menu,
+    globalShortcut,
+    ipcMain,
+    clipboard,
+    BrowserWindow
+} = require("electron");
 const path = require("path");
 const windowStateKeeper = require('electron-window-state');
 const defaultMenu = require('electron-default-menu');
-const BrowserWindow = electron.BrowserWindow;
 const argv = require('minimist')(process.argv.slice(2));
 const qs = require("querystring");
 let openedFilePath;
@@ -38,6 +39,10 @@ app.on('ready', function () {
         'y': mainWindowState.y,
         'width': mainWindowState.width,
         'height': mainWindowState.height,
+        webPreferences: {
+            nodeIntegration: true,
+            webSecurity: false,
+        }
     });
     mainWindow.webContents.on('new-window', function (e) {
         openURL(e.url);
@@ -75,7 +80,6 @@ app.on('ready', function () {
     });
 
     ipcMain.on("reply-copy", (event, arg) => {
-        console.log(event, arg);
         clipboard.writeHTML(arg);
     });
     globalShortcut.register('CommandOrControl+Shift+C', () => {
