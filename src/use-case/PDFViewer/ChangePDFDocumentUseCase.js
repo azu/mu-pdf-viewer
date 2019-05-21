@@ -1,5 +1,5 @@
 // LICENSE : MIT
-"use strict";
+
 import {UseCase} from 'almin';
 // repository
 import pdfViewerRepository from "../../infra/repository/PDFViewerRepository"

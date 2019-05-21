@@ -1,21 +1,9 @@
-// LICENSE : MIT
-"use strict";
-const assert = require("assert");
 /**
  * ReduceState class is an abstraction class.
  * It provide redux like mechanism.
  * You should override `reduce(payload): ReduceState`.
  */
 export default class ReduceState {
-    /**
-     * ([initial]) => state
-     * @abstract
-     * @param {ReduceState} [state]
-     * @returns {ReduceState} newState
-     */
-    constructor(state = {}) {
-        // should implement in subclass
-    }
 
     /**
      * (domain) => state

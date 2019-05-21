@@ -1,17 +1,14 @@
 // LICENSE : MIT
-"use strict";
-const React = require("react");
+
 import PDFFindListItem from "./PDFFindListItem";
+import React from "react";
+
 export default class PDFFindList extends React.Component {
     static get propTypes() {
         return {
             items: React.PropTypes.array,
             onItemClick: React.PropTypes.func,
         }
-    }
-
-    constructor() {
-        super();
     }
 
     render() {

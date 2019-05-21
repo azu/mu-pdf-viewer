@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/azu/mu-pdf-viewer/static/css/main.db48a75b.chunk.css",
+    "main.js": "/azu/mu-pdf-viewer/static/js/main.e8f37ad7.chunk.js",
+    "main.js.map": "/azu/mu-pdf-viewer/static/js/main.e8f37ad7.chunk.js.map",
+    "runtime~main.js": "/azu/mu-pdf-viewer/static/js/runtime~main.eb898a4f.js",
+    "runtime~main.js.map": "/azu/mu-pdf-viewer/static/js/runtime~main.eb898a4f.js.map",
+    "static/css/2.3047d38c.chunk.css": "/azu/mu-pdf-viewer/static/css/2.3047d38c.chunk.css",
+    "static/js/2.fb98eec2.chunk.js": "/azu/mu-pdf-viewer/static/js/2.fb98eec2.chunk.js",
+    "static/js/2.fb98eec2.chunk.js.map": "/azu/mu-pdf-viewer/static/js/2.fb98eec2.chunk.js.map",
+    "index.html": "/azu/mu-pdf-viewer/index.html",
+    "precache-manifest.7b02805dfec0d2fa287617b492dc2bc3.js": "/azu/mu-pdf-viewer/precache-manifest.7b02805dfec0d2fa287617b492dc2bc3.js",
+    "service-worker.js": "/azu/mu-pdf-viewer/service-worker.js",
+    "static/css/2.3047d38c.chunk.css.map": "/azu/mu-pdf-viewer/static/css/2.3047d38c.chunk.css.map",
+    "static/css/main.db48a75b.chunk.css.map": "/azu/mu-pdf-viewer/static/css/main.db48a75b.chunk.css.map"
+  }
+}

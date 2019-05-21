@@ -1,5 +1,5 @@
 // LICENSE : MIT
-"use strict";
+
 import React from "react";
 import AppLocator from "../../AppLocator";
 import Keyboard from "../uikit/Keyboard";

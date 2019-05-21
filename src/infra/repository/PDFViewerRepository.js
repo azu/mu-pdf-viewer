@@ -1,8 +1,6 @@
-// LICENSE : MIT
-"use strict";
-const REPOSITORY_CHANGE = 'REPOSITORY_CHANGE';
 import MemoryRepository from "./MemoryRepository/MemoryRepository";
 import PDFViewer from "../../domain/PDFViewer/PDFViewer";
+const REPOSITORY_CHANGE = 'REPOSITORY_CHANGE';
 /**
  * @type {MemoryRepository.<PDFViewer>}
  */

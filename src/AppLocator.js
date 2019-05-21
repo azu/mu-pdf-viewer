@@ -1,5 +1,5 @@
 // LICENSE : MIT
-"use strict";
+
 export class AppLocator {
     constructor() {
         /**

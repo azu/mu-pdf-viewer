@@ -1,6 +1,6 @@
 // LICENSE : MIT
-"use strict";
-const React = require("react");
+
+import React from "react";
 import AppLocator from "../../../AppLocator";
 import ChangePDFDocumentUseCase from "../../../use-case/PDFViewer/ChangePDFDocumentUseCase";
 import PDFViewer from "../../project/PDFViewer/PDFViewer";

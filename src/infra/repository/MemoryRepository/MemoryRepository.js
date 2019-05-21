@@ -1,5 +1,5 @@
 // LICENSE : MIT
-"use strict";
+
 const MapLike = require("map-like");
 const assert = require("assert");
 const EventEmitter = require("events");

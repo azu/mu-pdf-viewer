@@ -1,5 +1,5 @@
 // LICENSE : MIT
-"use strict";
+
 import ReduceStore from "../base/ReduceStore"
 import PDFViewerState from "./PDFViewerState";
 export default class PDFViewerStore extends ReduceStore {

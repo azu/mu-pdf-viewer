@@ -1,5 +1,5 @@
 // LICENSE : MIT
-"use strict";
+
 import {Store} from "almin";
 export default class ReduceStore extends Store {
     constructor() {

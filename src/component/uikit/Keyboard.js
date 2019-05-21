@@ -1,7 +1,7 @@
 // LICENSE : MIT
-"use strict";
-const React = require("react");
-const ReactDOM = require("react-dom");
+
+import React from "react";
+import ReactDOM from "react-dom";
 const MouseTrap = require("mousetrap");
 require("mousetrap/plugins/pause/mousetrap-pause");
 require("mousetrap/plugins/bind-dictionary/mousetrap-bind-dictionary");
@@ -34,10 +34,6 @@ export default class Keyboard extends React.Component {
         }
     }
 
-    constructor() {
-        super();
-    }
-
     get hasChildren() {
         return React.Children.count(this.props.children) > 0;
     }
@@ -51,7 +47,7 @@ export default class Keyboard extends React.Component {
     }
 
     componentWillUnmount() {
-        Mousetrap.reset();
+        MouseTrap.reset();
     }
 
     render() {
@@ -71,7 +67,7 @@ export default class Keyboard extends React.Component {
         if (disabled) {
             MouseTrap.pause();
         } else {
-            Mousetrap.unpause();
+            MouseTrap.unpause();
         }
     }
 
@@ -87,10 +83,10 @@ export default class Keyboard extends React.Component {
         if (this.hasChildren) {
             // bind to the children node
             const domNode = ReactDOM.findDOMNode(this.refs.Keyboard);
-            Mousetrap(domNode).bind(bindKeyMap);
+            MouseTrap(domNode).bind(bindKeyMap);
         } else {
             // bind to global
-            Mousetrap.bind(bindKeyMap);
+            MouseTrap.bind(bindKeyMap);
         }
     }
 }

@@ -1,9 +1,9 @@
 // LICENSE : MIT
-"use strict";
+
 const React = require("react");
 const qs = require("querystring");
-const fs = require("fs");
-const shell = require('electron').shell;
+const shell = window.require('electron').shell;
+const remote = window.require('electron').remote;
 const openURL = (URL) => {
     if (/^https?:/.test(URL)) {
         shell.openExternal(URL, {
@@ -26,11 +26,12 @@ export default class PDFViewer extends React.Component {
      * @return {string}
      */
     static get PDFJS_VIEWER_HTML() {
-        return "./pdfjs/web/viewer.html";
+        // PDF.jsはfile://じゃないとうまく表示できない問題があるため、file://をもらう
+        return remote.getGlobal('pdfjsViewerFilePath')
     }
 
     /**
-     * @return {PDFViewerApplication|undefined}
+     * @return {PDFViewerApplication?}
      */
     get PDFViewerApplication() {
         if (!this.iframe) {
@@ -107,6 +108,8 @@ export default class PDFViewer extends React.Component {
 
     render() {
         const param = qs.stringify({file: this.props.url});
+        // PDF.jsはfile://じゃないとうまく表示できない問題がある
+        // iframeなのはcontentを取るため
         return <iframe className="PDFViewer"
                        src={`${PDFViewer.PDFJS_VIEWER_HTML}?${param}`}
                        ref={(c) => this.iframe = c}
@@ -146,7 +149,7 @@ export default class PDFViewer extends React.Component {
             return;
         }
         const jsContents = [
-            fs.readFileSync(__dirname + "/plugins/keyboard.js", "utf-8")
+            require("./plugins/keyboard")
         ];
         jsContents.forEach((content) => {
             webview.executeJavaScript(content);

@@ -1,5 +1,5 @@
 // LICENSE : MIT
-"use strict";
+
 import ReduceState from "../base/ReduceState";
 export default class PDFViewerState extends ReduceState {
     /**

@@ -1,5 +1,5 @@
 // LICENSE : MIT
-"use strict";
+
 const React = require("react");
 export default class PDFFindListItem extends React.Component {
     render() {
