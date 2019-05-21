@@ -21,16 +21,20 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                include: path.join(__dirname, "src/component/project/PDFViewer"),
-                loader: "transform?brfs"
-            },
-            {
-                test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel",
+                loader: "babel-loader",
                 query: {
                     cacheDirectory: true
                 }
+            }, {
+                test: /\.css/,
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {url: false}
+                    }
+                ]
             }
         ]
     }

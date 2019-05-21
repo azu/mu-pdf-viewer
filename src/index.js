@@ -5,6 +5,14 @@ import AlminLogger from "almin-logger";
 import React from "react";
 import ReactDOM from "react-dom";
 const qs = require('querystring');
+function requireAll(r) {
+    r.keys().forEach(r);
+}
+
+require("normalize.css/normalize.css");
+requireAll(require.context('./css/', true, /\.css$/));
+requireAll(require.context('./component/', true, /\.css$/));
+
 import AppLocator from "./AppLocator";
 // component
 import AppContainer from "./component/container/AppContainer";

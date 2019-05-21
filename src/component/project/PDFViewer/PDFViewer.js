@@ -101,7 +101,7 @@ export default class PDFViewer extends React.Component {
         iframeWindow.removeEventListener("documentload", this._onDocumentLoad);
     }
 
-    componentWillUpdate() {
+    componentDidUpdate(prevProps) {
         this._addEventToIframe();
     }
 

@@ -1,5 +1,6 @@
 // LICENSE : MIT
 "use strict";
+module.exports = `
 window.addEventListener("keydown", function(event) {
     switch (event.keyCode) {
         case 74: // 'j'
@@ -8,3 +9,4 @@ window.addEventListener("keydown", function(event) {
             console.log("j");
     }
 });
+`
