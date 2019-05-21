@@ -39,6 +39,25 @@ export default class PDFViewer extends React.Component {
         return this.iframe.contentWindow.PDFViewerApplication;
     }
 
+    /**
+     * base64 image
+     * @return {string|undefined}
+     */
+    get currentPageAsHTML() {
+        let pdfViewerApplication = this.PDFViewerApplication;
+        if (!pdfViewerApplication) {
+            return;
+        }
+        const page = pdfViewerApplication.page;
+        const canvas = this.iframe.contentWindow.document.querySelector(`canvas#page${page}`);
+        if (!canvas) {
+            return;
+        }
+        const pageObject = pdfViewerApplication.getPage(page);
+        const textContent = pageObject.getTextContent();
+        return `<img src="${canvas.toDataURL('image/png')}" alt="${textContent}" />`;
+    }
+
     set page(pageNumber) {
         if (!this.iframe) {
             return;

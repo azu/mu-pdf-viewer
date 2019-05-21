@@ -2,7 +2,6 @@
 "use strict";
 import React from "react";
 import AppLocator from "../../AppLocator";
-import Keyboard from "../uikit/Keyboard";
 import PDFViewerContainer from "./PDFViewerContainer/PDFViewerContainer";
 
 export default class AppContainer extends React.Component {

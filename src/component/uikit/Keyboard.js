@@ -71,7 +71,7 @@ export default class Keyboard extends React.Component {
         if (disabled) {
             MouseTrap.pause();
         } else {
-            Mousetrap.unpause();
+            MouseTrap.unpause();
         }
     }
 
@@ -87,10 +87,10 @@ export default class Keyboard extends React.Component {
         if (this.hasChildren) {
             // bind to the children node
             const domNode = ReactDOM.findDOMNode(this.refs.Keyboard);
-            Mousetrap(domNode).bind(bindKeyMap);
+            MouseTrap(domNode).bind(bindKeyMap);
         } else {
             // bind to global
-            Mousetrap.bind(bindKeyMap);
+            MouseTrap.bind(bindKeyMap);
         }
     }
 }

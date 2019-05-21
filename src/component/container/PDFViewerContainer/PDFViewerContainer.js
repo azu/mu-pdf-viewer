@@ -5,8 +5,11 @@ import AppLocator from "../../../AppLocator";
 import ChangePDFDocumentUseCase from "../../../use-case/PDFViewer/ChangePDFDocumentUseCase";
 import PDFViewer from "../../project/PDFViewer/PDFViewer";
 import PDFFindList from "../../project/PDFFindList/PDFFindList";
+
+const {ipcRenderer} = require('electron');
 // state
 import PDFViewerState from "../../../store/PDFViewer/PDFViewerState";
+
 export default class PDFViewerContainer extends React.Component {
     static get propTypes() {
         return {
@@ -23,6 +26,10 @@ export default class PDFViewerContainer extends React.Component {
             matchPages: [],
             findBarActive: false
         };
+        ipcRenderer.on('to-copy', () => {
+            console.log("onCopyHandler");
+            ipcRenderer.send('reply-copy', this.pdfViewer.currentPageAsHTML);
+        });
         this._boundOnDrop = this._onDrop.bind(this);
         this._boundOnLoad = this._onLoad.bind(this);
         this._boundOnFind = this._onFind.bind(this);
@@ -39,7 +46,7 @@ export default class PDFViewerContainer extends React.Component {
                 onItemClick={this.boundOnItemClick}
             />
             <PDFViewer
-                ref={(c) => this.pdfViewer = c }
+                ref={(c) => this.pdfViewer = c}
                 url={pdfViewer.url}
                 onLoad={this._boundOnLoad}
                 onDrop={this._boundOnDrop}
