@@ -32,20 +32,9 @@ Download binary from latest release
 
 - https://github.com/azu/mu-pdf-viewer/releases/latest
 
-Or Build by yourself
+Build by yourself
 
-OS X:
-
-    npm run electron:build:osx
-
-Windows:
-
-    npm run electron:build:win
-
-Linux:
-
-    npm run electron:build:linux
-
+    yarn dist
 
 ## Architecture
 

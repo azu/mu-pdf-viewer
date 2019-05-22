@@ -4,15 +4,7 @@ const MapLike = require("map-like");
 const assert = require("assert");
 const EventEmitter = require("events");
 const REPOSITORY_CHANGE = 'REPOSITORY_CHANGE';
-/**
- * @template T
- * @constructor
- */
 export default class MemoryRepository extends EventEmitter {
-    /**
-     * @param {T} DomainClass
-     * @param {MapLike} database
-     */
     constructor(DomainClass, database = new MapLike()) {
         super();
 
@@ -29,7 +21,6 @@ export default class MemoryRepository extends EventEmitter {
 
     /**
      * @param {*} id
-     * @return {T}
      * @private
      */
     _get(id) {
@@ -39,7 +30,6 @@ export default class MemoryRepository extends EventEmitter {
     /**
      * Find domain by domain's `id`
      * @param {string} id
-     * @returns {T}
      */
     findById(id) {
         return this._get(id);
@@ -47,7 +37,6 @@ export default class MemoryRepository extends EventEmitter {
 
     /**
      * Return last used domain if it exist.
-     * @returns {T|undefined}
      */
     lastUsed() {
         const item = this._database.get(`${this._name}.lastUsed`);
@@ -59,7 +48,6 @@ export default class MemoryRepository extends EventEmitter {
 
     /**
      * Save domain and emit change.
-     * @param {T} item
      */
     save(item) {
         assert(item instanceof this.DomainClass, `Save only ${this.DomainClass.name} instance`);
@@ -79,7 +67,6 @@ export default class MemoryRepository extends EventEmitter {
 
     /**
      * add change handler
-     * @param {function(domain: T)} handler
      */
     onChange(handler) {
         this.on(REPOSITORY_CHANGE, handler);

@@ -10,21 +10,19 @@ module.exports = {
         publicPath: "/build/",
         filename: "bundle.js"
     },
-    target: "electron",
+    target: "electron-renderer",
     module: {
         // to avoid warning by power-assert-formatter
         exprContextCritical: false,
-        loaders: [
-            {
-                test: /\.json$/,
-                loader: "json-loader"
-            },
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader",
-                query: {
-                    cacheDirectory: true
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        cacheDirectory: true
+                    }
                 }
             }, {
                 test: /\.css/,
