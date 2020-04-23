@@ -53,10 +53,39 @@ export default class PDFViewer extends React.Component {
         if (!canvas) {
             return;
         }
+
+        const selection = this.iframe.contentWindow.getSelection();
+        const canvasRect = canvas.getBoundingClientRect();
+        const selectionStartNodeRect = selection.anchorNode.parentNode.getBoundingClientRect()
+        const selectionEndNodeRect = selection.focusNode.parentNode.getBoundingClientRect()
+
+        const cropCanvas = (sourceCanvas, { left, top, width, height }) => {
+            const destCanvas = document.createElement('canvas');
+            destCanvas.width = width;
+            destCanvas.height = height;
+            destCanvas.getContext("2d").drawImage(
+                sourceCanvas,
+                left, top, width, height,  // source rect with content to crop
+                0, 0, width, height);      // newCanvas, same size as source rect
+            return destCanvas;
+        }
+        const selectionRange = {
+            top: (selectionStartNodeRect.top < selectionEndNodeRect.top ? selectionStartNodeRect.top : selectionEndNodeRect.top) - canvasRect.top,
+            left: (selectionStartNodeRect.left < selectionEndNodeRect.left ? selectionStartNodeRect.left : selectionEndNodeRect.left) - canvasRect.left,
+            right: (selectionStartNodeRect.right > selectionEndNodeRect.right ? selectionStartNodeRect.right : selectionEndNodeRect.right) - canvasRect.left,
+            bottom: (selectionStartNodeRect.bottom > selectionEndNodeRect.bottom ? selectionStartNodeRect.bottom : selectionEndNodeRect.bottom) - canvasRect.top
+        }
+        const MARGIN = 16;
+        const croppedCanvas = cropCanvas(canvas, {
+            top: selectionRange.top - MARGIN,
+            left: 0,
+            width: canvasRect.width,
+            height: Math.abs(selectionRange.bottom - selectionRange.top) + MARGIN * 2,
+        });
         const pageObject = await PDFViewerApplication.pdfDocument.getPage(page);
         const results = await pageObject.getTextContent();
         const textContent = results.items.map(item => item.str).join("");
-        return `<img src="${canvas.toDataURL('image/png')}" alt="${textContent}" />`;
+        return `<img src="${croppedCanvas.toDataURL('image/png')}" alt="${textContent}" />`;
     }
 
     set page(pageNumber) {
@@ -126,7 +155,7 @@ export default class PDFViewer extends React.Component {
     }
 
     render() {
-        const param = qs.stringify({file: this.props.url});
+        const param = qs.stringify({ file: this.props.url });
         return <iframe className="PDFViewer"
                        src={`${PDFViewer.PDFJS_VIEWER_HTML}?${param}`}
                        ref={(c) => this.iframe = c}
