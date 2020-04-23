@@ -79,7 +79,7 @@ export default class PDFViewer extends React.Component {
         const croppedCanvas = cropCanvas(canvas, {
             top: selectionRange.top - MARGIN,
             left: 0,
-            width: canvasRect.width,
+            width: canvas.width,
             height: Math.abs(selectionRange.bottom - selectionRange.top) + MARGIN * 2,
         });
         const pageObject = await PDFViewerApplication.pdfDocument.getPage(page);
