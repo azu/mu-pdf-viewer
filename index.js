@@ -19,7 +19,7 @@ app.once('open-file', function (event, filePath) {
 });
 const openURL = (URL) => {
     if (/^https?:/.test(URL)) {
-        shell.openExternal(URL, {
+        return shell.openExternal(URL, {
             activate: true
         });
     }
@@ -41,6 +41,7 @@ app.on('ready', function () {
         'height': mainWindowState.height,
         webPreferences: {
             nodeIntegration: true,
+            contextIsolation: false,
             webSecurity: false,
         }
     });
@@ -48,10 +49,10 @@ app.on('ready', function () {
         openURL(e.url);
     });
     const openHTML = (filePath) => {
-        const query = qs.stringify({
+        const query = filePath ? qs.stringify({
             file: filePath
-        });
-        mainWindow.loadURL('file://' + __dirname + '/public/index.html?' + query);
+        }) : "";
+        return mainWindow.loadURL('file://' + __dirname + '/public/index.html?' + query);
     };
     if (argv._ && argv._.length > 0) {
         const filePath = path.resolve(process.cwd(), argv._[0]);
@@ -78,7 +79,7 @@ app.on('ready', function () {
     app.on('window-all-closed', function () {
         app.quit();
     });
-
+    
     ipcMain.on("reply-copy", (event, arg) => {
         clipboard.writeHTML(arg);
     });

@@ -4,18 +4,10 @@
       "@babel/preset-env",
       {
         "targets": {
-          "electron": "5"
+          "electron": "16"
         }
       }
     ],
     "@babel/preset-react"
-  ],
-  "env": {
-    "development": {
-      "presets": [
-        "jsdoc-to-assert",
-        "power-assert"
-      ]
-    }
-  }
+  ]
 }

@@ -1,5 +1,5 @@
 const path = require("path");
-
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 module.exports = {
     entry: [
         "./src/index.js"
@@ -30,10 +30,13 @@ module.exports = {
                     "style-loader",
                     {
                         loader: "css-loader",
-                        options: {url: false}
+                        options: { url: false }
                     }
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new NodePolyfillPlugin()
+    ]
 };
